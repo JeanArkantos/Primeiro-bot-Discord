@@ -1,10 +1,38 @@
 require("dotenv").config();
-const { REST, Routes } = require("discord.js");
+const { REST, Routes, ApplicationCommandOptionType } = require("discord.js");
 
 const commands = [
   {
-    name: "ping",
-    description: "Responde o Ping com Pong!",
+    name: "soma",
+    description: "Soma dois números",
+    options:[
+      {
+        name: 'primeiro-numero',
+        description: 'Primeiro Número.',
+        type: ApplicationCommandOptionType.Number,
+        choices:[
+          {
+            name: 'um',
+            value: 1,
+          },
+          {
+            name: 'dois',
+            value: 2,
+          },
+          {
+            name: 'tres',
+            value: 3,
+          },
+        ],
+        required:true,
+      },
+      {
+        name: 'segundo-numero',
+        description: 'Segundo Número.',
+        type: ApplicationCommandOptionType.Number,
+        required:true,
+      },
+    ],
   },
 ];
 

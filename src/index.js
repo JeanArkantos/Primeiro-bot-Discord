@@ -14,8 +14,18 @@ client.on("ready", (c) => {
   console.log(`✅ ${c.user.tag} está online.`);
 });
 
+client.on("interactionCreate", (interaction) => {
+  if (!interaction.isChatInputCommand()) return;
+
+  if (interaction.commandName === "soma"){
+    const num1 = interaction.options.get('primeiro-numero')?.value;
+    const num2 = interaction.options.get('segundo-numero')?.value;
+
+    interaction.reply(`A soma dos números: ${num1 + num2}`);
+  }
+});
+
 client.on("messageCreate", (message) => {
-  //console.log(message.content); //Mostra todas as mensagens do server no console log.
   if (message.author.bot) {
     return;
   }
@@ -25,15 +35,7 @@ client.on("messageCreate", (message) => {
     message.content === "ola" ||
     message.content === "oi"
   ) {
-    message.reply("Chupa minhas bolas!");
-  }
-});
-
-client.on("interactionCreate", (interaction) => {
-  if (!interaction.isChatInputCommand()) return;
-
-  if (interaction.commandName === "ping") {
-    interaction.reply("Pong!");
+    message.reply("Oi pra você!");
   }
 });
 
